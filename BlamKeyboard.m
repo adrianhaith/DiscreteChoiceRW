@@ -57,7 +57,7 @@ classdef BlamKeyboard < PsychHandle
                     %press_key = cell2mat(press_key);
                     press_key = press_key{1}; % incorrect, but how to fix?
                 end
-                press_index = find(not(cellfun('isempty', (strfind(press_key, tolower(self.valid_keys))))));
+                press_index = find(not(cellfun('isempty', (strfind(self.valid_keys, press_key)))));
                 time_press = min(pressed(pressed > 0));
                 new_press = [press_index, time_press];
             else % no new presses

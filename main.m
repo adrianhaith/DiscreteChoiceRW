@@ -43,17 +43,16 @@ function output = main(subject_id, tgtfile, fullscreen)
     intro_txt = ['Keys are: ', pks];
     txt = PsychText('val', intro_txt,...
                     'color', [255 255 255],...
-                    'x', 'center', 'y', 'center', ...
-                    'size', 30, ...
-                    'style', 'bold');
+                    'x', win.center(1), 'y', win.center(2), ...
+                    'size', 30);
     txt.Draw(win.pointer);
 
 
     % set up cat
-    kitty = imread('cat.jpg');
-    textures = PsychTexture;
-    textures.AddImage(kitty, win.pointer, 1, 'draw_rect', [10 10 300 200]);
-    textures.Draw(win.pointer, 1);
+%     kitty = imread('cat.jpg');
+%     textures = PsychTexture;
+%     textures.AddImage(kitty, win.pointer, 1, 'draw_rect', [10 10 300 200]);
+%     textures.Draw(win.pointer, 1);
 
     win.Flip;
     WaitSecs(2);
@@ -61,7 +60,7 @@ function output = main(subject_id, tgtfile, fullscreen)
     txt_str = ['Points: +', num2str(points), '\n', 'Trial #: ', num2str(0)];
     txt.Set('val', txt_str, 'color', [78 230 50]);
     txt.Draw(win.pointer);
-    textures.Draw(win.pointer, 1);
+%     textures.Draw(win.pointer, 1);
     time_ref = win.Flip;
 
     for nn = 1:num_trials
@@ -88,9 +87,9 @@ function output = main(subject_id, tgtfile, fullscreen)
         txt_str = ['Points: +', num2str(points), '\n', 'Trial #: ', num2str(nn)];
         txt.Set('val', txt_str);
         txt.Draw(win.pointer);
-        textures.Draw(win.pointer, 1);
+%         textures.Draw(win.pointer, 1);
         win.Flip;
-        WaitSecs(0.1);
+        WaitSecs(0.5);
         output(nn, 6) = points;
     end
 
